@@ -1,8 +1,5 @@
-execute pathogen#infect()
-
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 
 filetype plugin indent on
 syntax enable
@@ -31,6 +28,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
+nnoremap <M-L> :Lines<CR>
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -42,8 +40,10 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/dict/words"
 
-let g:prettier#config#parser = 'babylon'
 :set background=dark
-colorscheme mustang
+colorscheme hybrid
 :set t_ut=
 set termguicolors
+
+set rtp+=~/.fzf
+packloadall
