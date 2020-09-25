@@ -9,6 +9,7 @@ set autoindent
 set ruler
 set pastetoggle=<F2>
 
+:set number
 :set number relativenumber
 :augroup numbertoggle
 :  autocmd!
