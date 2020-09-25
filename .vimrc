@@ -1,6 +1,3 @@
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 filetype plugin indent on
 syntax enable
 
@@ -30,6 +27,9 @@ set splitbelow
 set splitright
 nnoremap <M-L> :Lines<CR>
 
+packadd! dracula
+colorscheme dracula
+
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
     return "\<C-N>"
@@ -40,10 +40,14 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/dict/words"
 
-:set background=dark
-colorscheme hybrid
 :set t_ut=
-set termguicolors
 
 set rtp+=~/.fzf
 packloadall
+
+if &term =~# '256color' && ( &term =~# '^screen'  || &term =~# '^tmux' )
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
