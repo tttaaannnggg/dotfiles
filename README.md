@@ -26,9 +26,13 @@ platform independent:
 * ssh keys for github
 * tmux + conf
 * vim + vimrc
+  * CoC
   * prettier
+  * vim-javascript
+  * vim-jsx-pretty
   * themes?
 * docker
+* yarn
 
 MacOS
 * homebrew
